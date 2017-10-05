@@ -13,6 +13,14 @@ if (localStorage.userInfoStored) {
   document.getElementById('userInfoSaved').style.display = 'block';
 }
 
+function clearInfo() {
+  localStorage.removeItem('info');
+  document.getElementById('userInfo').style.display = 'block';
+  document.getElementById('userInfoSaved').style.display = 'none';
+}
+var clearUserInfo = document.getElementById('clearUserInfo');
+clearUserInfo.addEventListener('click', clearInfo);
+
 function Products(name, url) {
   this.name = name;
   this.url = url;
