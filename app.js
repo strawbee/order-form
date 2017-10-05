@@ -1,8 +1,17 @@
 'use strict';
 
-// All the Products Available
-Products.all = [];
-Products.ordered = [];
+
+if (localStorage.itemsInCart) {
+  Products.ordered = JSON.parse(localStorage['cart']);
+} else {
+  Products.ordered = [];
+}
+
+if (localStorage.userInfoStored) {
+  Products.userInfo = localStorage['info'];
+  document.getElementById('userInfo').style.display = 'none';
+  document.getElementById('userInfoSaved').style.display = 'block';
+}
 
 function Products(name, url) {
   this.name = name;
@@ -10,6 +19,8 @@ function Products(name, url) {
   this.number = 0;
   Products.all.push(this);
 }
+
+Products.all = [];
 
 new Products('Travel Bag', 'images/bag.jpg');
 new Products('Banana Cutter', 'images/banana.jpg');
@@ -57,6 +68,8 @@ function addToCart(event) {
     }
   }
   localStorage['cart'] = JSON.stringify(Products.ordered);
+  document.getElementById('itemConfirmed').innerHTML += productName + ' [' + productNum + '] has been added to cart. <br />';
+  localStorage.itemsInCart = true;
 }
 
 var productsForm = document.getElementById('orderProducts');
@@ -72,7 +85,7 @@ function goToCart(event) {
   var userPhone = event.target.userPhone.value;
   var userCreditCard = event.target.userCreditCard.value;
 
-  ProductOrders.userInfo = {
+  Products.userInfo = {
     name: userName,
     street: userStreet,
     city: userCity,
@@ -82,7 +95,8 @@ function goToCart(event) {
     card: userCreditCard
   };
 
-  localStorage['info'] = JSON.stringify(ProductOrders.userInfo);
+  localStorage['info'] = JSON.stringify(Products.userInfo);
+  localStorage.userInfoStored = true;
 }
 
 var submitUserInfo = document.getElementById('userInfo');
