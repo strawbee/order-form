@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Order Form for Bus-Mall Products</title>
+  </head>
+  <body>
+    <h1>Order Form For Bus-Mall Products</h1>
+
+    <form id="orderProducts">
+      <p> <!--product info-->
+        <label for="productsList">Product: </label>
+        <select name="productsList" id="productsList" required>
+          <!-- <option value="iPod" selected="selected">iPod</option> -->
+        </select>
+
+        <label for="numProduct">Number: </label>
+        <input type="number" name="numProduct" required />
+      </p>
+
+      <p> <!--submit-->
+        <button type="submit" id="addToCartButton">Add to Cart</button>
+      </p>
+    </form>
+
+    <form name="personalInfo">
+      <p> <!--personal information-->
+        <label for="userName">Name: </label>
+        <input type="text" name="userName" id="userName" /><br />
+
+        <label for="userStreet">Street: </label>
+        <input type="text" name="userStreet" id="userStreet" /><br />
+
+        <label for="userCity">City: </label>
+        <input type="text" name="userCity" id="userCity" />
+
+        <label for="userState">State: </label>
+        <input type="text" name="userState" id="userState" />
+
+        <label for="userZip">Zip Code: </label>
+        <input type="text" name="userZip" id="userZip" /><br />
+
+        <label for="userPhone">Phone Number: </label>
+        <input type="text" name="userPhone" id="userPhone" /><br />
+
+        <label for="userCreditCard">Credit Card Number: </label>
+        <input type="number" name="userCreditCard" id="userCreditCard" /><br />
+      </p>
+
+      <p> <!--submit-->
+        <button type="submit" id="orderProductsButton">Order Products</button>
+      </p>
+    </form>
+
+    <script src="app.js"></script>
+  </body>
+</html>
