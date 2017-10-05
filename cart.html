@@ -6,24 +6,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Shopping Cart</h1>
+    <div id="wrapper">
+      <div id="shoppingCartItems">
+        <h1>Shopping Cart</h1>
 
-    <form id="shoppingCart">
-      <p id="productsSelected">
+        <form id="shoppingCart">
+          <p id="productsSelected">
 
-      </p>
-      <button type="submit" id="removeItem">Remove Item</button>
-    </form>
-    <a href="index.html"><button>Back to Product Page</button></a>
+          </p>
+          <p class="center">
+            <button type="submit" id="removeItem">Remove Item</button>
+          </p>
+        </form>
+        <p class="center">
+          <a href="index.html" id="backToProductPage"><button>Back to Product Page</button></a>
+        </p>
 
-    <p id="itemRemovedP">Your item has been removed from your cart. <a href="cart.html">Refresh Cart</a>?</p>
+        <p id="itemRemovedP">Your item has been removed from your cart. <a href="cart.html">Refresh Cart</a>?</p>
 
+        <p id="displayInfo"></p>
 
+        <p class="center">
+          <button id="confirmButton">Confirm Order</button>
+        </p>
+      </div>
 
-    <p id="displayInfo"></p>
-
-    <button id="confirmButton">Confirm Order</button>
-
+      <p id="orderConfirmed" class="center">Thank you! Your order is being processed. <br />
+      <a href="index.html"><button>Continue Shopping?</button></a></p>
+    </div>
     <script src="cart.js"></script>
   </body>
 </html>

@@ -9,7 +9,7 @@ var lastFourOfCard = userInfo.card.slice(-4);
 
 if (localStorage) {
   for (var i = 0; i < itemsInCart.length; i++) {
-    productsSelected.innerHTML += '<input type=\"checkbox\" name=\"productsInCart\" value=\"' + itemsInCart[i].name + '\" \\> ' + itemsInCart[i].name + ' | Number Ordered: ' + itemsInCart[i].number + '<br /><img src=\"' + itemsInCart[i].image + '\"><br />';
+    productsSelected.innerHTML += '<input type=\"checkbox\" name=\"productsInCart\" value=\"' + itemsInCart[i].name + '\" \\> ' + itemsInCart[i].name + ' [Quantity: ' + itemsInCart[i].number + ']<br /><img class=\"cartItem\" src=\"' + itemsInCart[i].image + '\"><br />';
   }
 
 var itemsToRemove = [];
@@ -36,6 +36,15 @@ var itemsToRemove = [];
   var removeItemButton = document.getElementById('shoppingCart');
   removeItemButton.addEventListener('submit', removeItem);
 
-  displayInfo.innerHTML = 'Name: ' + userInfo.name + '<br />Address: ' + userInfo.street + ', ' + userInfo.city + ', ' + userInfo.state + ' ' + userInfo.zip + '<br />Last Four Digits Of Card: ' + lastFourOfCard;
+  displayInfo.innerHTML = 'Name: ' + userInfo.name + '<br />Address: ' + userInfo.street + ', ' + userInfo.city + ', ' + userInfo.state.toUpperCase() + ' ' + userInfo.zip + '<br />Phone Number: ' + userInfo.phone + '<br />Last Four Digits Of Card: ' + lastFourOfCard;
 
 }
+
+function orderConfirmed() {
+  document.getElementById('shoppingCartItems').style.display = 'none';
+  document.getElementById('orderConfirmed').style.display = 'block';
+  localStorage.clear();
+}
+
+var confirmButton = document.getElementById('confirmButton');
+confirmButton.addEventListener('click', orderConfirmed);

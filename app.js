@@ -17,6 +17,7 @@ function clearInfo() {
   localStorage.removeItem('info');
   document.getElementById('userInfo').style.display = 'block';
   document.getElementById('userInfoSaved').style.display = 'none';
+  localStorage.removeItem('userInfoStored');
 }
 var clearUserInfo = document.getElementById('clearUserInfo');
 clearUserInfo.addEventListener('click', clearInfo);

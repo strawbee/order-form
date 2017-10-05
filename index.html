@@ -3,64 +3,67 @@
   <head>
     <meta charset="utf-8">
     <title>Order Form for Bus-Mall Products</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
   </head>
   <body>
-    <h1>Order Form For Bus-Mall Products</h1>
 
-    <form id="orderProducts">
-      <p> <!--product info-->
-        <label for="productsList">Product: </label>
-        <select name="productsList" id="productsList" required>
-          <option selected="selected" disabled value=""></option>
-        </select>
+    <div id="wrapper">
+      <h1>Order Form For Bus-Mall Products</h1>
 
-        <label for="numProduct">Number: </label>
-        <input type="number" name="numProduct" required />
+      <form id="orderProducts">
+        <p> <!--product info-->
+          <label for="productsList">Product: </label>
+          <select name="productsList" id="productsList" required>
+            <option selected="selected" disabled value=""></option>
+          </select>
+
+          <label for="numProduct">Number: </label>
+          <input type="number" name="numProduct" id="numProduct" required />
+        </p>
+
+        <p class="center"> <!--submit-->
+          <button type="submit" id="addToCartButton">Add to Cart</button>
+        </p>
+      </form>
+
+      <p id="itemConfirmed" class="center"></p>
+
+      <form id="userInfo" action="cart.html">
+        <p> <!--personal information-->
+          <label for="userName">Name: </label>
+          <input type="text" name="userName" id="userName" required /><br />
+
+          <label for="userStreet">Street: </label>
+          <input type="text" name="userStreet" id="userStreet" required /><br />
+
+          <label for="userCity">City: </label>
+          <input type="text" name="userCity" id="userCity" required />
+
+          <label for="userState">State: </label>
+          <input type="text" name="userState" id="userState" required />
+
+          <label for="userZip">Zip Code: </label>
+          <input type="number" name="userZip" id="userZip" required /><br />
+
+          <label for="userPhone">Phone Number: </label>
+          <input type="number" name="userPhone" id="userPhone" required /><br />
+
+          <label for="userCreditCard">Credit Card Number: </label>
+          <input type="number" name="userCreditCard" id="userCreditCard" required /><br />
+        </p>
+
+        <p class="center"> <!--submit-->
+          <button type="submit" id="orderProductsButton">Order Products</button>
+        </p>
+      </form>
+
+      <p id="userInfoSaved">
+        Your user information has been saved.<br />
+        <button id="clearUserInfo">Clear User Info</button>
+        <a href="cart.html"><button>Go Back To Cart</button></a>
       </p>
-
-      <p> <!--submit-->
-        <button type="submit" id="addToCartButton">Add to Cart</button>
-      </p>
-    </form>
-
-    <p id="itemConfirmed"></p>
-
-    <form id="userInfo" action="cart.html">
-      <p> <!--personal information-->
-        <label for="userName">Name: </label>
-        <input type="text" name="userName" id="userName" /><br />
-
-        <label for="userStreet">Street: </label>
-        <input type="text" name="userStreet" id="userStreet" /><br />
-
-        <label for="userCity">City: </label>
-        <input type="text" name="userCity" id="userCity" />
-
-        <label for="userState">State: </label>
-        <input type="text" name="userState" id="userState" />
-
-        <label for="userZip">Zip Code: </label>
-        <input type="text" name="userZip" id="userZip" /><br />
-
-        <label for="userPhone">Phone Number: </label>
-        <input type="text" name="userPhone" id="userPhone" /><br />
-
-        <label for="userCreditCard">Credit Card Number: </label>
-        <input type="number" name="userCreditCard" id="userCreditCard" /><br />
-      </p>
-
-      <p> <!--submit-->
-        <button type="submit" id="orderProductsButton">Order Products</button>
-      </p>
-    </form>
-
-    <p id="userInfoSaved">
-      Your user information has been saved.<br />
-      <button id="clearUserInfo">Clear User Info</button>
-      <a href="cart.html"><button>Go Back To Cart</button></a>
-    </p>
-
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
