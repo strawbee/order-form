@@ -17,13 +17,20 @@ var itemsToRemove = [];
   function removeItem(event) {
     event.preventDefault();
     var checkedItems = document.getElementsByName('productsInCart');
+    var valueOfCheckedItem, currentName;
     for (var j = 0; j < checkedItems.length; j++) {
       if (checkedItems[j].checked === true) {
-        itemsToRemove.push(itemsInCart[j].name);
+        valueOfCheckedItem = checkedItems[j].value;
+        for (var x = 0; x < itemsInCart.length; x++) {
+          if (valueOfCheckedItem === itemsInCart[x].name) {
+            itemsToRemove.push(itemsInCart[x].name);
+          }
+        }
       }
     }
-    for (var k = 0; k < itemsInCart.length + 1; k++) {
-      var currentName = itemsInCart[k].name;
+
+    for (var k = itemsInCart.length - 1; k >= 0; k--) {
+      currentName = itemsInCart[k].name;
       if (itemsToRemove.includes(currentName)) {
         itemsInCart.splice(k, 1);
       }
