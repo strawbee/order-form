@@ -22,7 +22,7 @@ var itemsToRemove = [];
         itemsToRemove.push(itemsInCart[j].name);
       }
     }
-    for (var k = 0; k < itemsInCart.length; k++) {
+    for (var k = 0; k < itemsInCart.length + 1; k++) {
       var currentName = itemsInCart[k].name;
       if (itemsToRemove.includes(currentName)) {
         itemsInCart.splice(k, 1);

@@ -78,6 +78,7 @@ function addToCart(event) {
   localStorage['cart'] = JSON.stringify(Products.ordered);
   document.getElementById('itemConfirmed').innerHTML += productName + ' [' + productNum + '] has been added to cart. <br />';
   localStorage.itemsInCart = true;
+  orderProducts.reset();
 }
 
 var productsForm = document.getElementById('orderProducts');
