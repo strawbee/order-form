@@ -2,10 +2,12 @@
 
 // All the Products Available
 Products.all = [];
+Products.ordered = [];
 
 function Products(name, url) {
   this.name = name;
   this.url = url;
+  this.number = 0;
   Products.all.push(this);
 }
 
@@ -30,27 +32,31 @@ new Products('Tentacle USB', 'images/usb.gif');
 new Products('Self Watering Can', 'images/water-can.jpg');
 new Products('Wine Glass', 'images/wine-glass.jpg');
 
-localStorage['products'] = JSON.stringify(Products.all);
-
 for (var i = 0; i < Products.all.length; i++) {
   document.getElementById('productsList').innerHTML += '<option value=\"' + Products.all[i].name + '\">' + Products.all[i].name + '</option>';
 }
 
 // Products for Shopping Cart
-ProductOrders.all = [];
-
-function ProductOrders(name, number) {
-  this.name = name;
-  this.number = number;
-  ProductOrders.all.push(this);
-}
 
 function addToCart(event) {
   event.preventDefault();
   var productName = event.target.productsList.value;
   var productNum = event.target.numProduct.value;
-  new ProductOrders(productName, productNum);
-  localStorage['cart'] = JSON.stringify(ProductOrders.all);
+  var productImage;
+
+  for (var j = 0; j < Products.all.length; j++) {
+    if (productName === Products.all[j].name) {
+      productImage = Products.all[j].url;
+      Products.ordered.push(
+        {
+          name: productName,
+          number: productNum,
+          image: productImage
+        }
+      );
+    }
+  }
+  localStorage['cart'] = JSON.stringify(Products.ordered);
 }
 
 var productsForm = document.getElementById('orderProducts');
@@ -58,7 +64,6 @@ productsForm.addEventListener('submit', addToCart);
 
 // Submit user info and go to cart page
 function goToCart(event) {
-  event.preventDefault();
   var userName = event.target.userName.value;
   var userStreet = event.target.userStreet.value;
   var userCity = event.target.userCity.value;
