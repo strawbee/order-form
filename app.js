@@ -30,6 +30,13 @@ new Products('Tentacle USB', 'images/usb.gif');
 new Products('Self Watering Can', 'images/water-can.jpg');
 new Products('Wine Glass', 'images/wine-glass.jpg');
 
+localStorage['products'] = JSON.stringify(Products.all);
+
+for (var i = 0; i < Products.all.length; i++) {
+  document.getElementById('productsList').innerHTML += '<option value=\"' + Products.all[i].name + '\">' + Products.all[i].name + '</option>';
+}
+
+// Products for Shopping Cart
 ProductOrders.all = [];
 
 function ProductOrders(name, number) {
@@ -38,20 +45,40 @@ function ProductOrders(name, number) {
   ProductOrders.all.push(this);
 }
 
-localStorage['products'] = JSON.stringify(Products.all);
-
-for (var i = 0; i < Products.all.length; i++) {
-  document.getElementById('productsList').innerHTML += '<option value=\"' + Products.all[i].name + '\">' + Products.all[i].name + '</option>';
-}
-
 function addToCart(event) {
   event.preventDefault();
   var productName = event.target.productsList.value;
   var productNum = event.target.numProduct.value;
   new ProductOrders(productName, productNum);
-  console.log('test');
   localStorage['cart'] = JSON.stringify(ProductOrders.all);
 }
 
 var productsForm = document.getElementById('orderProducts');
 productsForm.addEventListener('submit', addToCart);
+
+// Submit user info and go to cart page
+function goToCart(event) {
+  event.preventDefault();
+  var userName = event.target.userName.value;
+  var userStreet = event.target.userStreet.value;
+  var userCity = event.target.userCity.value;
+  var userState = event.target.userState.value;
+  var userZip = event.target.userZip.value;
+  var userPhone = event.target.userPhone.value;
+  var userCreditCard = event.target.userCreditCard.value;
+
+  ProductOrders.userInfo = {
+    name: userName,
+    street: userStreet,
+    city: userCity,
+    state: userState,
+    zip: userZip,
+    phone: userPhone,
+    card: userCreditCard
+  };
+
+  localStorage['info'] = JSON.stringify(ProductOrders.userInfo);
+}
+
+var submitUserInfo = document.getElementById('userInfo');
+submitUserInfo.addEventListener('submit', goToCart);
