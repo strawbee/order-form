@@ -10,6 +10,7 @@ var itemsToRemove = [];
 function removeItem(event) {
   event.preventDefault();
   var checkedItems = document.getElementsByName('productsInCart');
+
   var valueOfCheckedItem, currentName;
   for (var j = 0; j < checkedItems.length; j++) {
     if (checkedItems[j].checked === true) {
@@ -45,9 +46,13 @@ if (localStorage) {
 }
 
 function orderConfirmed() {
-  document.getElementById('shoppingCartItems').style.display = 'none';
-  document.getElementById('orderConfirmed').style.display = 'block';
-  localStorage.clear();
+  if(itemsInCart.length > 0) {
+    document.getElementById('shoppingCartItems').style.display = 'none';
+    document.getElementById('orderConfirmed').style.display = 'block';
+    localStorage.clear();
+  } else {
+    document.getElementById('confirmValidation').textContent = 'You need to have an item in your cart.';
+  }
 }
 
 var confirmButton = document.getElementById('confirmButton');

@@ -37,6 +37,11 @@ function addToCart(event) {
   var productNum = event.target.numProduct.value;
   var productImage;
 
+  if (productNum <= 0) {
+    document.getElementById('numValidation').style.display = 'block';
+    return;
+  }
+
   for (var j = 0; j < Products.all.length; j++) {
     if (productName === Products.all[j].name) {
       productImage = Products.all[j].url;
