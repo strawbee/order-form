@@ -34,17 +34,6 @@ function removeItem(event) {
   document.getElementById('shoppingCart').style.display = 'none';
 }
 
-if (localStorage) {
-  for (var i = 0; i < itemsInCart.length; i++) {
-    productsSelected.innerHTML += '<input type=\"checkbox\" name=\"productsInCart\" value=\"' + itemsInCart[i].name + '\" \\> ' + itemsInCart[i].name + ' [Quantity: ' + itemsInCart[i].number + ']<br /><img class=\"cartItem\" src=\"' + itemsInCart[i].image + '\"><br />';
-  }
-
-  var removeItemButton = document.getElementById('shoppingCart');
-  removeItemButton.addEventListener('submit', removeItem);
-
-  displayInfo.innerHTML = 'Name: ' + userInfo.name + '<br />Address: ' + userInfo.street + ', ' + userInfo.city + ', ' + userInfo.state.toUpperCase() + ' ' + userInfo.zip + '<br />Phone Number: ' + userInfo.phone + '<br />Last Four Digits Of Card: ' + lastFourOfCard;
-}
-
 function orderConfirmed() {
   if(itemsInCart.length > 0) {
     document.getElementById('shoppingCartItems').style.display = 'none';
@@ -53,6 +42,17 @@ function orderConfirmed() {
   } else {
     document.getElementById('confirmValidation').textContent = 'You need to have an item in your cart.';
   }
+}
+
+if (itemsInCart.length > 0) {
+  for (var i = 0; i < itemsInCart.length; i++) {
+    productsSelected.innerHTML += '<input type=\"checkbox\" name=\"productsInCart\" value=\"' + itemsInCart[i].name + '\" \\> ' + itemsInCart[i].name + ' [Quantity: ' + itemsInCart[i].number + ']<br /><img class=\"cartItem\" src=\"' + itemsInCart[i].image + '\"><br />';
+  }
+
+  var removeItemButton = document.getElementById('shoppingCart');
+  removeItemButton.addEventListener('submit', removeItem);
+
+  displayInfo.innerHTML = 'Name: ' + userInfo.name + '<br />Address: ' + userInfo.street + ', ' + userInfo.city + ', ' + userInfo.state.toUpperCase() + ' ' + userInfo.zip + '<br />Phone Number: ' + userInfo.phone + '<br />Last Four Digits Of Card: ' + lastFourOfCard;
 }
 
 var confirmButton = document.getElementById('confirmButton');
