@@ -6,12 +6,12 @@ var productsSelected = document.getElementById('productsSelected');
 var displayInfo = document.getElementById('displayInfo');
 var lastFourOfCard = userInfo.card.slice(-4);
 var itemsToRemove = [];
-var checkedItems = document.getElementsByName('productsInCart');
 
 function removeItem(event) {
   event.preventDefault();
-
+  var checkedItems = document.getElementsByName('productsInCart');
   var valueOfCheckedItem, currentName;
+
   for (var j = 0; j < checkedItems.length; j++) {
     if (checkedItems[j].checked === true) {
       valueOfCheckedItem = checkedItems[j].value;
