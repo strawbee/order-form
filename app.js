@@ -1,34 +1,5 @@
 'use strict';
 
-
-if (localStorage.itemsInCart) {
-  Products.ordered = JSON.parse(localStorage['cart']);
-} else {
-  Products.ordered = [];
-}
-
-if (localStorage.userInfoStored) {
-  Products.userInfo = localStorage['info'];
-  document.getElementById('userInfo').style.display = 'none';
-  document.getElementById('userInfoSaved').style.display = 'block';
-}
-
-function clearInfo() {
-  localStorage.removeItem('info');
-  document.getElementById('userInfo').style.display = 'block';
-  document.getElementById('userInfoSaved').style.display = 'none';
-  localStorage.removeItem('userInfoStored');
-}
-var clearUserInfo = document.getElementById('clearUserInfo');
-clearUserInfo.addEventListener('click', clearInfo);
-
-function Products(name, url) {
-  this.name = name;
-  this.url = url;
-  this.number = 0;
-  Products.all.push(this);
-}
-
 Products.all = [];
 
 new Products('Travel Bag', 'images/bag.jpg');
@@ -52,12 +23,14 @@ new Products('Tentacle USB', 'images/usb.gif');
 new Products('Self Watering Can', 'images/water-can.jpg');
 new Products('Wine Glass', 'images/wine-glass.jpg');
 
-for (var i = 0; i < Products.all.length; i++) {
-  document.getElementById('productsList').innerHTML += '<option value=\"' + Products.all[i].name + '\">' + Products.all[i].name + '</option>';
+function Products(name, url) {
+  this.name = name;
+  this.url = url;
+  this.number = 0;
+  Products.all.push(this);
 }
 
-// Products for Shopping Cart
-
+// Add to Cart
 function addToCart(event) {
   event.preventDefault();
   var productName = event.target.productsList.value;
@@ -82,8 +55,13 @@ function addToCart(event) {
   orderProducts.reset();
 }
 
-var productsForm = document.getElementById('orderProducts');
-productsForm.addEventListener('submit', addToCart);
+// Clear user info
+function clearInfo() {
+  localStorage.removeItem('info');
+  document.getElementById('userInfo').style.display = 'block';
+  document.getElementById('userInfoSaved').style.display = 'none';
+  localStorage.removeItem('userInfoStored');
+}
 
 // Submit user info and go to cart page
 function goToCart(event) {
@@ -109,5 +87,28 @@ function goToCart(event) {
   localStorage.userInfoStored = true;
 }
 
+if (localStorage.itemsInCart) {
+  Products.ordered = JSON.parse(localStorage['cart']);
+} else {
+  Products.ordered = [];
+}
+
+if (localStorage.userInfoStored) {
+  Products.userInfo = localStorage['info'];
+  document.getElementById('userInfo').style.display = 'none';
+  document.getElementById('userInfoSaved').style.display = 'block';
+}
+
+for (var i = 0; i < Products.all.length; i++) {
+  document.getElementById('productsList').innerHTML += '<option value=\"' + Products.all[i].name + '\">' + Products.all[i].name + '</option>';
+}
+
+// Event Listeners
+var productsForm = document.getElementById('orderProducts');
+productsForm.addEventListener('submit', addToCart);
+
 var submitUserInfo = document.getElementById('userInfo');
 submitUserInfo.addEventListener('submit', goToCart);
+
+var clearUserInfo = document.getElementById('clearUserInfo');
+clearUserInfo.addEventListener('click', clearInfo);

@@ -10,6 +10,51 @@ body {
   background: #fff8b7;
 }
 
+h1 {
+  text-align: center;
+}
+
+input, select {
+  border: solid 2px;
+  padding: 5px;
+  margin: 5px;
+}
+
+input:focus {
+  background: #fff6ba;
+}
+
+button {
+  font-size: 1.5em;
+  padding: 10px;
+  border: solid 4px;
+  border-radius: 5px;
+  background: linear-gradient(#fff6ba, #fce42d);
+  margin: 20px;
+}
+
+button:hover {
+  background: #fff6ba;
+  box-shadow: 2px 2px 2px #91860f;
+}
+
+img {
+  width: 200px;
+  height: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.cartItem {
+  position: relative;
+  left: 350px;
+  top: -30px;
+  border: solid 3px;
+  border-radius: 10px;
+}
+
 #wrapper {
   border: solid 5px;
   width: 640px;
@@ -18,10 +63,6 @@ body {
   margin: 50px auto;
   background: linear-gradient(#fce42d, #fff6ba);
   border-radius: 10px;
-}
-
-h1 {
-  text-align: center;
 }
 
 #orderProducts {
@@ -48,41 +89,6 @@ h1 {
   width: 100px;
 }
 
-input, select {
-  border: solid 2px;
-  padding: 5px;
-  margin: 5px;
-}
-
-input:focus {
-  background: #fff6ba;
-}
-
-
-
-button {
-  font-size: 1.5em;
-  padding: 10px;
-  border: solid 4px;
-  border-radius: 5px;
-  background: linear-gradient(#fff6ba, #fce42d);
-  margin: 20px;
-}
-
-button:hover {
-  background: #fff6ba;
-  box-shadow: 2px 2px 2px #91860f;
-}
-
-.center {
-  text-align: center;
-}
-
-img {
-  width: 200px;
-  height: auto;
-}
-
 #itemRemovedP {
   display: none;
 }
@@ -93,12 +99,4 @@ img {
 
 #orderConfirmed {
   display: none;
-}
-
-.cartItem {
-  position: relative;
-  left: 350px;
-  top: -30px;
-  border: solid 3px;
-  border-radius: 10px;
 }
