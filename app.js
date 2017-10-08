@@ -2,6 +2,13 @@
 
 Products.all = [];
 
+function Products(name, url) {
+  this.name = name;
+  this.url = url;
+  this.number = 0;
+  Products.all.push(this);
+}
+
 new Products('Travel Bag', 'images/bag.jpg');
 new Products('Banana Cutter', 'images/banana.jpg');
 new Products('Bathroom Ipad Holder', 'images/bathroom.jpg');
@@ -22,13 +29,6 @@ new Products('Unicorn Meat', 'images/unicorn.jpg');
 new Products('Tentacle USB', 'images/usb.gif');
 new Products('Self Watering Can', 'images/water-can.jpg');
 new Products('Wine Glass', 'images/wine-glass.jpg');
-
-function Products(name, url) {
-  this.name = name;
-  this.url = url;
-  this.number = 0;
-  Products.all.push(this);
-}
 
 // Add to Cart
 function addToCart(event) {
