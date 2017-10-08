@@ -94,7 +94,7 @@ img {
   width: 100px;
 }
 
-#itemRemovedP, #userInfoSaved, #orderConfirmed, #numValidation {
+#userInfoSaved, #orderConfirmed, #numValidation {
   display: none;
 }
 
